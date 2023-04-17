@@ -1,0 +1,52 @@
+PODS:
+  - Alamofire (5.6.4)
+  - IQKeyboardManager (6.5.11)
+  - Kingfisher (7.6.2)
+  - lottie-ios (4.1.3)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
+  - PanModal (1.2.7)
+  - SwiftEntryKit (2.0.0)
+  - SwiftMessages (9.0.6):
+    - SwiftMessages/App (= 9.0.6)
+  - SwiftMessages/App (9.0.6)
+  - UPCarouselFlowLayout (1.1.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - IQKeyboardManager
+  - Kingfisher
+  - lottie-ios
+  - NVActivityIndicatorView
+  - PanModal
+  - SwiftEntryKit
+  - SwiftMessages
+  - UPCarouselFlowLayout
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManager
+    - Kingfisher
+    - lottie-ios
+    - NVActivityIndicatorView
+    - PanModal
+    - SwiftEntryKit
+    - SwiftMessages
+    - UPCarouselFlowLayout
+
+SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
+  SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
+  SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
+  UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
+
+PODFILE CHECKSUM: e4433d23d3456a3cd7cae6aa4dec6105bfab3a69
+
+COCOAPODS: 1.12.0

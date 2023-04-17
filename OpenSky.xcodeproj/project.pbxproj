@@ -14,6 +14,7 @@
 		6BAB2FB529EDCDA4001C1286 /* OpenSky.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB2FB329EDCDA4001C1286 /* OpenSky.xcdatamodeld */; };
 		6BAB2FB729EDCDA5001C1286 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BAB2FB629EDCDA5001C1286 /* Assets.xcassets */; };
 		6BAB2FBA29EDCDA5001C1286 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BAB2FB829EDCDA5001C1286 /* LaunchScreen.storyboard */; };
+		B2046A735F84E79D7D2555D8 /* Pods_OpenSky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8630E87C9C4F1FE8665407F2 /* Pods_OpenSky.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		6BAB2FB629EDCDA5001C1286 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BAB2FB929EDCDA5001C1286 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BAB2FBB29EDCDA5001C1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8630E87C9C4F1FE8665407F2 /* Pods_OpenSky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenSky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A8053D52CA20837F8F930E8 /* Pods-OpenSky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSky.release.xcconfig"; path = "Target Support Files/Pods-OpenSky/Pods-OpenSky.release.xcconfig"; sourceTree = "<group>"; };
+		BA2CFD494E9676C639DC94D8 /* Pods-OpenSky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSky.debug.xcconfig"; path = "Target Support Files/Pods-OpenSky/Pods-OpenSky.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2046A735F84E79D7D2555D8 /* Pods_OpenSky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D6FA276ED48084A164BCB79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8630E87C9C4F1FE8665407F2 /* Pods_OpenSky.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66BA9542840D17A8047B4A82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA2CFD494E9676C639DC94D8 /* Pods-OpenSky.debug.xcconfig */,
+				9A8053D52CA20837F8F930E8 /* Pods-OpenSky.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6BAB2F9E29EDCDA4001C1286 = {
 			isa = PBXGroup;
 			children = (
 				6BAB2FA929EDCDA4001C1286 /* OpenSky */,
 				6BAB2FA829EDCDA4001C1286 /* Products */,
+				66BA9542840D17A8047B4A82 /* Pods */,
+				2D6FA276ED48084A164BCB79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,9 +198,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BAB2FBE29EDCDA5001C1286 /* Build configuration list for PBXNativeTarget "OpenSky" */;
 			buildPhases = (
+				A0C7DC687DBF0D1A17F86EE1 /* [CP] Check Pods Manifest.lock */,
 				6BAB2FA329EDCDA4001C1286 /* Sources */,
 				6BAB2FA429EDCDA4001C1286 /* Frameworks */,
 				6BAB2FA529EDCDA4001C1286 /* Resources */,
+				ACE46A3E0AD3A6575903852E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,6 +258,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A0C7DC687DBF0D1A17F86EE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenSky-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACE46A3E0AD3A6575903852E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OpenSky/Pods-OpenSky-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OpenSky/Pods-OpenSky-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OpenSky/Pods-OpenSky-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6BAB2FA329EDCDA4001C1286 /* Sources */ = {
@@ -382,6 +451,7 @@
 		};
 		6BAB2FBF29EDCDA5001C1286 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA2CFD494E9676C639DC94D8 /* Pods-OpenSky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -411,6 +481,7 @@
 		};
 		6BAB2FC029EDCDA5001C1286 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A8053D52CA20837F8F930E8 /* Pods-OpenSky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
