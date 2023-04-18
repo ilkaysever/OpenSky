@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManager
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        configureIQKeyboard()
+        
         return true
     }
 
@@ -30,6 +33,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    // MARK: - IQKeyboardManager
+    
+    func configureIQKeyboard() {
+        IQKeyboardManager.shared().isEnabled = true
+        IQKeyboardManager.shared().isEnableAutoToolbar = true
+        IQKeyboardManager.shared().toolbarDoneBarButtonItemText = ""
+        IQKeyboardManager.shared().toolbarTintColor = AppColors.backgroundColor
+        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared().overrideKeyboardAppearance = true
+        IQKeyboardManager.shared().keyboardAppearance = .dark
     }
 
     // MARK: - Core Data stack
