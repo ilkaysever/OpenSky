@@ -6,8 +6,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Ubuntu-Regular.ttf">
+            <string>Ubuntu-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
@@ -21,22 +27,97 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWe-L1-6Lj">
+                                <rect key="frame" x="16" y="75" width="361" height="48"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rTQ-mV-hjm">
+                                        <rect key="frame" x="16" y="12.999999999999996" width="24" height="22.333333333333332"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rTQ-mV-hjm" secondAttribute="height" multiplier="1:1" id="Guv-s2-1hI"/>
+                                            <constraint firstAttribute="height" constant="24" id="MNe-M0-O8a"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Uçuş, şehir ara..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJa-Ma-IGK">
+                                        <rect key="frame" x="48" y="15.33333333333333" width="305" height="17.666666666666671"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Ubuntu-Regular" family="Ubuntu" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="rTQ-mV-hjm" firstAttribute="centerY" secondItem="zWe-L1-6Lj" secondAttribute="centerY" id="CC1-9n-PWv"/>
+                                    <constraint firstItem="gJa-Ma-IGK" firstAttribute="centerY" secondItem="rTQ-mV-hjm" secondAttribute="centerY" id="RX4-M2-vbe"/>
+                                    <constraint firstAttribute="trailing" secondItem="gJa-Ma-IGK" secondAttribute="trailing" constant="8" id="Y78-Hp-Efk"/>
+                                    <constraint firstItem="rTQ-mV-hjm" firstAttribute="leading" secondItem="zWe-L1-6Lj" secondAttribute="leading" constant="16" id="iYh-U1-kqm"/>
+                                    <constraint firstAttribute="height" constant="48" id="oyn-Vq-0nk"/>
+                                    <constraint firstItem="gJa-Ma-IGK" firstAttribute="leading" secondItem="rTQ-mV-hjm" secondAttribute="trailing" constant="8" id="zaP-kT-M2p"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBV-HD-ZXs">
+                                <rect key="frame" x="333" y="147" width="44" height="44"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="On2-98-nqs">
+                                        <rect key="frame" x="8" y="8.9999999999999964" width="28" height="26.333333333333332"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfR-H1-gfl">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="mapTypeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N5z-Qd-mra"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="On2-98-nqs" secondAttribute="bottom" constant="8" id="2aa-O7-ybO"/>
+                                    <constraint firstItem="On2-98-nqs" firstAttribute="leading" secondItem="tBV-HD-ZXs" secondAttribute="leading" constant="8" id="3XK-C9-z2b"/>
+                                    <constraint firstItem="On2-98-nqs" firstAttribute="top" secondItem="tBV-HD-ZXs" secondAttribute="top" constant="8" id="6qE-UE-jn2"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZfR-H1-gfl" secondAttribute="trailing" id="HjV-cS-k1r"/>
+                                    <constraint firstAttribute="width" secondItem="tBV-HD-ZXs" secondAttribute="height" multiplier="1:1" id="LVX-xN-Bot"/>
+                                    <constraint firstAttribute="trailing" secondItem="On2-98-nqs" secondAttribute="trailing" constant="8" id="QyR-Hd-OY2"/>
+                                    <constraint firstItem="ZfR-H1-gfl" firstAttribute="top" secondItem="tBV-HD-ZXs" secondAttribute="top" id="ZbH-SF-x0K"/>
+                                    <constraint firstAttribute="height" constant="44" id="ss5-CQ-vpE"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZfR-H1-gfl" secondAttribute="bottom" id="u43-UW-XOw"/>
+                                    <constraint firstItem="ZfR-H1-gfl" firstAttribute="leading" secondItem="tBV-HD-ZXs" secondAttribute="leading" id="z2e-zT-78G"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
                             <constraint firstItem="chU-qn-yDz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bq3-Bj-bEJ"/>
+                            <constraint firstItem="zWe-L1-6Lj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Gvc-bk-zc7"/>
                             <constraint firstItem="chU-qn-yDz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LHZ-lQ-1fS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zWe-L1-6Lj" secondAttribute="trailing" constant="16" id="Wz2-Mf-93o"/>
+                            <constraint firstItem="zWe-L1-6Lj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ZSe-Wh-RfS"/>
+                            <constraint firstItem="tBV-HD-ZXs" firstAttribute="top" secondItem="zWe-L1-6Lj" secondAttribute="bottom" constant="24" id="cCC-IJ-8Bt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tBV-HD-ZXs" secondAttribute="trailing" constant="16" id="dRD-nU-CPu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="chU-qn-yDz" secondAttribute="trailing" id="rIm-wy-eVk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="chU-qn-yDz" secondAttribute="bottom" id="vCr-Br-fd2"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="map" destination="chU-qn-yDz" id="YNS-k7-ReY"/>
+                        <outlet property="mapTypeView" destination="tBV-HD-ZXs" id="WhG-2j-c8r"/>
+                        <outlet property="searchContainer" destination="zWe-L1-6Lj" id="SWm-Pf-gHr"/>
+                        <outlet property="searchTxtField" destination="gJa-Ma-IGK" id="Zta-VZ-aNp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="5"/>
+            <point key="canvasLocation" x="139.69465648854961" y="4.9295774647887329"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="map" catalog="system" width="128" height="112"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
