@@ -140,6 +140,7 @@
 			children = (
 				6BD1E96929EDE86100E78292 /* Launch */,
 				6BD1E96A29EDE86C00E78292 /* Main */,
+				6BECF3EE29EF12F600CC53F4 /* Detail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -296,6 +297,37 @@
 				6BECF3E329EEE2C400CC53F4 /* FlyResponseModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6BECF3EE29EF12F600CC53F4 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6BECF3EF29EF130600CC53F4 /* Model */,
+				6BECF3F029EF130F00CC53F4 /* View */,
+				6BECF3F129EF131400CC53F4 /* ViewModel */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		6BECF3EF29EF130600CC53F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6BECF3F029EF130F00CC53F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6BECF3F129EF131400CC53F4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
