@@ -36,6 +36,9 @@
 		6BECF3ED29EF08C400CC53F4 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECF3EC29EF08C400CC53F4 /* UIView+Ext.swift */; };
 		6BECF3F429EF376800CC53F4 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECF3F229EF376800CC53F4 /* DetailVC.swift */; };
 		6BECF3F529EF376800CC53F4 /* DetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BECF3F329EF376800CC53F4 /* DetailVC.xib */; };
+		6BECF3F729EF514C00CC53F4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECF3F629EF514C00CC53F4 /* LocationManager.swift */; };
+		6BECF3F929EF693B00CC53F4 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECF3F829EF693B00CC53F4 /* DetailModel.swift */; };
+		6BECF3FB29EF694700CC53F4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BECF3FA29EF694700CC53F4 /* DetailViewModel.swift */; };
 		B2046A735F84E79D7D2555D8 /* Pods_OpenSky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8630E87C9C4F1FE8665407F2 /* Pods_OpenSky.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +74,9 @@
 		6BECF3EC29EF08C400CC53F4 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		6BECF3F229EF376800CC53F4 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		6BECF3F329EF376800CC53F4 /* DetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailVC.xib; sourceTree = "<group>"; };
+		6BECF3F629EF514C00CC53F4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6BECF3F829EF693B00CC53F4 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		6BECF3FA29EF694700CC53F4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		8630E87C9C4F1FE8665407F2 /* Pods_OpenSky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenSky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8053D52CA20837F8F930E8 /* Pods-OpenSky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSky.release.xcconfig"; path = "Target Support Files/Pods-OpenSky/Pods-OpenSky.release.xcconfig"; sourceTree = "<group>"; };
 		BA2CFD494E9676C639DC94D8 /* Pods-OpenSky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSky.debug.xcconfig"; path = "Target Support Files/Pods-OpenSky/Pods-OpenSky.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 		6BD1E96529EDE7C600E78292 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				6BECF3F629EF514C00CC53F4 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -316,6 +323,7 @@
 		6BECF3EF29EF130600CC53F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6BECF3F829EF693B00CC53F4 /* DetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,6 +340,7 @@
 		6BECF3F129EF131400CC53F4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6BECF3FA29EF694700CC53F4 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -463,11 +472,14 @@
 				6BECF3ED29EF08C400CC53F4 /* UIView+Ext.swift in Sources */,
 				6BECF3E129EEC6DA00CC53F4 /* AppFonts.swift in Sources */,
 				6BECF3C329EEB9F000CC53F4 /* NetworkManager.swift in Sources */,
+				6BECF3FB29EF694700CC53F4 /* DetailViewModel.swift in Sources */,
 				6BAB2FAF29EDCDA4001C1286 /* MainVC.swift in Sources */,
 				6BECF3F429EF376800CC53F4 /* DetailVC.swift in Sources */,
 				6BECF3CB29EEC52300CC53F4 /* BaseTabbarController.swift in Sources */,
+				6BECF3F929EF693B00CC53F4 /* DetailModel.swift in Sources */,
 				6BECF3E629EEE95700CC53F4 /* FlyViewModel.swift in Sources */,
 				6BAB2FB529EDCDA4001C1286 /* OpenSky.xcdatamodeld in Sources */,
+				6BECF3F729EF514C00CC53F4 /* LocationManager.swift in Sources */,
 				6BECF3CE29EEC56200CC53F4 /* AppColors.swift in Sources */,
 				6BECF3C129EEB9CC00CC53F4 /* NetworkHelper.swift in Sources */,
 				6BAB2FAB29EDCDA4001C1286 /* AppDelegate.swift in Sources */,

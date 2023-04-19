@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 
 enum MapType: Int {
     case standardMap = 0
@@ -28,7 +27,6 @@ class MainVC: BaseViewController {
     @IBOutlet weak var myLocationView: UIView!
     
     // MARK: - Variables
-    let coordinate = CLLocationCoordinate2D(latitude: 52.375, longitude: 4.897)
     let viewModel = FlyViewModel()
     var mapType: MapType?
     
@@ -45,7 +43,6 @@ class MainVC: BaseViewController {
     // Setup UI Compopnents func.
     private func setupUI() {
         searchTxtField.delegate = self
-        //searchContainer.setCircleView()
         searchContainer.addCornerRadius(radius: 8)
         searchContainer.addBorderView(width: 1.5, color: .orange)
         searchContainer.addShadow()
@@ -73,23 +70,22 @@ class MainVC: BaseViewController {
         myLocationView.addShadow()
     }
     
-    // Map view configure & User Current Location in Map
+    // MapView configure & User Current Location in Map
     private func configureInitialMap() {
         mapView.delegate = self
         mapView.mapType = .standard
-//        map.setRegion(MKCoordinateRegion(center: coordinate,
-//                                         span: MKCoordinateSpan(latitudeDelta: 0.5,
-//                                                                longitudeDelta: 0.5)), animated: false)
-//        addCustomPin()
+        mapView.showsUserLocation = true
+        currentLocation()
     }
     
-    // Add Custom AirPort Pin to map
-    private func addCustomPin() {
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        pin.title = "Deneme Başlık"
-        pin.subtitle = "Deneme Alt Başlık"
-        mapView.addAnnotation(pin)
+    // Current Location func. from LocationManager
+    private func currentLocation() {
+        LocationManager.shared.getCurrentLocationData { (location) in
+            let coordinate = location.coordinate
+            let span = MKCoordinateSpan(latitudeDelta: 3, longitudeDelta: 3)
+            let region = MKCoordinateRegion(center: coordinate, span: span)
+            self.mapView.setRegion(region, animated: true)
+        }
     }
     
     // Request of the searched location
@@ -106,7 +102,7 @@ class MainVC: BaseViewController {
                 self.mapView.removeAnnotations(annotations)
                 
                 guard let lat = response?.boundingRegion.center.latitude,
-                        let lon = response?.boundingRegion.center.longitude else { return }
+                      let lon = response?.boundingRegion.center.longitude else { return }
                 
                 let annotation = MKPointAnnotation()
                 annotation.title = searchText
@@ -114,12 +110,14 @@ class MainVC: BaseViewController {
                 self.mapView.addAnnotation(annotation)
                 
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                let span = MKCoordinateSpan(latitudeDelta: 0.8, longitudeDelta: 0.8)
+                let span = MKCoordinateSpan(latitudeDelta: 6, longitudeDelta: 6)
                 let region = MKCoordinateRegion(center: coordinate, span: span)
                 self.mapView.setRegion(region, animated: true)
             }
         }
     }
+    
+    // MARK: - Request Functions
     
     private func setupBinding() {
         DispatchQueue.main.async {
@@ -137,6 +135,7 @@ class MainVC: BaseViewController {
         }
     }
     
+    // MARK: - Open Detail Bottom Sheet
     func showDetailSheet() {
         let vc = DetailVC()
         self.presentPanModal(vc)
@@ -161,37 +160,37 @@ class MainVC: BaseViewController {
     
     @IBAction func zoomOutTapped(_ sender: Any) {
         debugPrint("zoom out yapıldı...")
+        showDetailSheet()
     }
     
     @IBAction func myLocationTapped(_ sender: Any) {
-        debugPrint("konumumu bul ...")
-        showDetailSheet()
+        currentLocation()
     }
     
 }
 
 extension MainVC: MKMapViewDelegate {
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        guard !(annotation is MKUserLocation) else { return nil }
-//
-//        var annotaionView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
-//        if annotaionView == nil {
-//            annotaionView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
-//            annotaionView?.canShowCallout = true
-//        } else {
-//            annotaionView?.annotation = annotation
-//        }
-//
-//        annotaionView?.image = UIImage(named: "airport_icon")
-//
-//        return annotaionView
-//    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil }
+        
+        var annotaionView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        if annotaionView == nil {
+            annotaionView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotaionView?.canShowCallout = true
+        } else {
+            annotaionView?.annotation = annotation
+        }
+        
+        annotaionView?.image = UIImage(named: "airport_icon")
+        
+        return annotaionView
+    }
     
 }
 
 extension MainVC: UITextFieldDelegate {
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if let textField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
@@ -199,6 +198,8 @@ extension MainVC: UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
             locationRequest(searchText: textField.text?.capitalized ?? "")
+            searchTxtField.text = ""
+            searchTxtField.text = nil
         }
         return false
     }

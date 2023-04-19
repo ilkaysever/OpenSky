@@ -32,12 +32,4 @@ final class FlyViewModel: FlyViewModelProtocol {
         }
     }
     
-//    func requestSeriesDetail(id: Int?) {
-//        TvSeriesRequest.shared.requestSeriesDetail(id: id ?? 0) { [weak self] data in
-//            guard let self = self else { return }
-//            self.modelItem = data
-//            self.didSuccess()
-//        }
-//    }
-    
 }

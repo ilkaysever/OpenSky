@@ -5,26 +5,26 @@
 //  Created by İlkay Sever on 18.04.2023.
 //
 
-struct FlyResponseModel: Codable {
-
-    var time: Int?
-    var states: [[State]]?
-
-    enum CodingKeys: String, CodingKey {
-        case time
-        case states
-    }
-
-}
-
-struct State: Codable {
-
+//struct FlyResponseModel: Codable {
+//
+//    var time: Int?
+//    var states: [State]?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case time
+//        case states
+//    }
+//
+//}
+//
+//struct State: Codable {
+//
 //    var icao24: String?
 //    var callsign: String?
 //    var origin_country: String?
 //    var time_position: Int?
 //    var last_contact: Int?
-    var longitude: Float?
+//    var longitude: Float?
 //    var latitude: Float?
 //    var baro_altitude: Float?
 //    var on_ground: Bool?
@@ -36,15 +36,15 @@ struct State: Codable {
 //    var squawk: String?
 //    var spi: Bool?
 //    var position_source: Int?
-
-    enum CodingKeys: Int, CodingKey {
-
+//
+//    enum CodingKeys: Int, CodingKey {
+//
 //       case icao24 = 0
 //        case callsign = 1
 //        case origin_country = 2
 //        case time_position = 3
 //        case last_contact = 4
-        case longitude = 5
+//        case longitude = 5
 //        case latitude = 6
 //        case baro_altitude = 7
 //        case on_ground = 8
@@ -56,6 +56,62 @@ struct State: Codable {
 //        case squawk = 14
 //        case spi = 15
 //        case position_source = 16
+//
+//    }
+//}
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let flyResponseModel = try? JSONDecoder().decode(FlyResponseModel.self, from: jsonData)
+
+import Foundation
+
+// MARK: - FlyResponseModel
+struct FlyResponseModel: Codable {
+    var time: Int?
+    var states: [[State]]?
+}
+
+enum State: Codable {
+    case bool(Bool)
+    case double(Double)
+    case string(String)
+    case null
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode(Bool.self) {
+            self = .bool(x)
+            return
+        }
+        if let x = try? container.decode(Double.self) {
+            self = .double(x)
+            return
+        }
+        if let x = try? container.decode(String.self) {
+            self = .string(x)
+            return
+        }
+        if container.decodeNil() {
+            self = .null
+            return
+        }
+        throw DecodingError.typeMismatch(State.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for State"))
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .bool(let x):
+            try container.encode(x)
+        case .double(let x):
+            try container.encode(x)
+        case .string(let x):
+            try container.encode(x)
+        case .null:
+            try container.encodeNil()
+        }
     }
 }
+
