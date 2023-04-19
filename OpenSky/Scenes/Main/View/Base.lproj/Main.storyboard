@@ -187,18 +187,27 @@
                                     <constraint firstItem="lW6-Cz-Qvg" firstAttribute="leading" secondItem="dKc-dp-9Tp" secondAttribute="leading" id="qIP-BX-DVY"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktif Uçuşlar: 4000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oI4-nT-8Xs">
+                                <rect key="frame" x="76" y="147" width="241" height="18"/>
+                                <fontDescription key="fontDescription" name="Ubuntu-Regular" family="Ubuntu" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
+                            <constraint firstItem="SeN-fk-ynR" firstAttribute="leading" secondItem="oI4-nT-8Xs" secondAttribute="trailing" constant="16" id="3D0-tu-VYE"/>
                             <constraint firstItem="chU-qn-yDz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bq3-Bj-bEJ"/>
                             <constraint firstItem="SeN-fk-ynR" firstAttribute="top" secondItem="zWe-L1-6Lj" secondAttribute="bottom" constant="24" id="D1J-75-Z9d"/>
                             <constraint firstItem="zWe-L1-6Lj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Gvc-bk-zc7"/>
+                            <constraint firstItem="oI4-nT-8Xs" firstAttribute="leading" secondItem="tBV-HD-ZXs" secondAttribute="trailing" constant="16" id="KBX-Mo-Xaa"/>
                             <constraint firstItem="chU-qn-yDz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LHZ-lQ-1fS"/>
                             <constraint firstAttribute="trailing" secondItem="dKc-dp-9Tp" secondAttribute="trailing" constant="16" id="PS5-T1-9No"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zWe-L1-6Lj" secondAttribute="trailing" constant="16" id="Wz2-Mf-93o"/>
                             <constraint firstItem="zWe-L1-6Lj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ZSe-Wh-RfS"/>
                             <constraint firstItem="tBV-HD-ZXs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="br8-Pa-oD5"/>
                             <constraint firstItem="tBV-HD-ZXs" firstAttribute="top" secondItem="zWe-L1-6Lj" secondAttribute="bottom" constant="24" id="cCC-IJ-8Bt"/>
+                            <constraint firstItem="oI4-nT-8Xs" firstAttribute="top" secondItem="tBV-HD-ZXs" secondAttribute="top" id="fF2-Pd-w45"/>
                             <constraint firstItem="dKc-dp-9Tp" firstAttribute="top" secondItem="SeN-fk-ynR" secondAttribute="bottom" constant="48" id="gfY-p3-xcm"/>
                             <constraint firstAttribute="trailing" secondItem="SeN-fk-ynR" secondAttribute="trailing" constant="16" id="lzV-mo-umH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="chU-qn-yDz" secondAttribute="trailing" id="rIm-wy-eVk"/>
@@ -206,6 +215,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="flyCountLabel" destination="oI4-nT-8Xs" id="b5Y-Wk-6a3"/>
                         <outlet property="mapTypeView" destination="tBV-HD-ZXs" id="WhG-2j-c8r"/>
                         <outlet property="mapView" destination="chU-qn-yDz" id="OUj-vn-cKE"/>
                         <outlet property="myLocationView" destination="dKc-dp-9Tp" id="ihL-DD-Bc8"/>

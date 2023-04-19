@@ -25,6 +25,7 @@ class MainVC: BaseViewController {
     @IBOutlet weak var zoomInView: UIView!
     @IBOutlet weak var zoomOutView: UIView!
     @IBOutlet weak var myLocationView: UIView!
+    @IBOutlet weak var flyCountLabel: UILabel!
     
     // MARK: - Variables
     let viewModel = FlyViewModel()
@@ -35,7 +36,7 @@ class MainVC: BaseViewController {
         super.viewDidLoad()
         setupUI()
         configureInitialMap()
-        //setupBinding()
+        setupBinding()
     }
     
     // MARK: - Functions
@@ -50,7 +51,7 @@ class MainVC: BaseViewController {
         searchTxtField.backgroundColor = .clear
         searchTxtField.borderStyle = .none
         searchTxtField.attributedPlaceholder = NSAttributedString(
-            string: "Uçuş, Şehir, PNR ara...",
+            string: "Ülke, Şehir ara...",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         mapTypeView.addCornerRadius(radius: 8)
@@ -68,6 +69,8 @@ class MainVC: BaseViewController {
         myLocationView.addCornerRadius(radius: 8)
         myLocationView.addBorderView(width: 1.5, color: .orange)
         myLocationView.addShadow()
+        
+        flyCountLabel.isHidden = true
     }
     
     // MapView configure & User Current Location in Map
@@ -88,6 +91,43 @@ class MainVC: BaseViewController {
         }
     }
     
+    // MARK: - Request Functions
+    
+    private func setupBinding() {
+        showLoading()
+        DispatchQueue.main.async {
+            self.fetchAllFly()
+        }
+    }
+    
+    private func fetchAllFly() {
+        viewModel.requestAllFly()
+        viewModel.didSuccess = {
+            if let flyState = self.viewModel.returnFlyState() {
+                self.addAirPlaneAnnotation(flyState: flyState)
+                self.flyCountLabel.isHidden = false
+                self.flyCountLabel.text = "Aktif Uçuşlar: " + "\(self.viewModel.returnFlyStateCount())"
+            }
+        }
+        viewModel.didFailure = { error in
+            debugPrint(error)
+        }
+    }
+    
+    private func fetchSearchFly(lamin: Double, lomin: Double, lamax: Double, lomax: Double) {
+        viewModel.requestSearchFly(lamin: lamin, lomin: lomin, lamax: lamax, lomax: lomax)
+        viewModel.didSuccess = {
+            if let flyState = self.viewModel.returnFlyState() {
+                self.addAirPlaneAnnotation(flyState: flyState)
+                self.flyCountLabel.isHidden = false
+                self.flyCountLabel.text = "Aktif Uçuşlar: " + "\(self.viewModel.returnFlyStateCount())"
+            }
+        }
+        viewModel.didFailure = { error in
+            debugPrint(error)
+        }
+    }
+    
     // Request of the searched location
     private func locationRequest(searchText: String) {
         let searchRequest = MKLocalSearch.Request()
@@ -104,10 +144,9 @@ class MainVC: BaseViewController {
                 guard let lat = response?.boundingRegion.center.latitude,
                       let lon = response?.boundingRegion.center.longitude else { return }
                 
-                let annotation = MKPointAnnotation()
-                annotation.title = searchText
-                annotation.coordinate = CLLocationCoordinate2DMake(lat, lon)
-                self.mapView.addAnnotation(annotation)
+                let lamax = lat + 2.0
+                let lomax = lon + 2.0
+                self.fetchSearchFly(lamin: lat, lomin: lon, lamax: lamax, lomax: lomax)
                 
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
                 let span = MKCoordinateSpan(latitudeDelta: 6, longitudeDelta: 6)
@@ -117,22 +156,29 @@ class MainVC: BaseViewController {
         }
     }
     
-    // MARK: - Request Functions
-    
-    private func setupBinding() {
-        DispatchQueue.main.async {
-            self.fetchAllFly()
-        }
-    }
-    
-    private func fetchAllFly() {
-        viewModel.requestAllFly()
-        viewModel.didSuccess = {
-            debugPrint(self.viewModel.flyData?.states ?? [[]])
-        }
-        viewModel.didFailure = { error in
-            debugPrint(error)
-        }
+    private func addAirPlaneAnnotation(flyState: [[State]]?) {
+        flyState?.forEach({ item in
+            var longitude = 0.0
+            switch item[5] {
+            case .double(let data):
+                longitude = CGFloat(data)
+            default:
+                longitude = 0.0
+            }
+            var latitude = 0.0
+            switch item[6] {
+            case .double(let data):
+                latitude = CGFloat(data)
+            default:
+                latitude = 0.0
+            }
+            let lon = CLLocationDegrees(longitude)
+            let lat = CLLocationDegrees(latitude)
+            let annotation = MKPointAnnotation()
+            annotation.title = "\(item[1])"
+            annotation.coordinate = CLLocationCoordinate2DMake(lat, lon)
+            self.mapView.addAnnotation(annotation)
+        })
     }
     
     // MARK: - Open Detail Bottom Sheet
@@ -165,6 +211,7 @@ class MainVC: BaseViewController {
     
     @IBAction func myLocationTapped(_ sender: Any) {
         currentLocation()
+        fetchAllFly()
     }
     
 }
@@ -182,7 +229,7 @@ extension MainVC: MKMapViewDelegate {
             annotaionView?.annotation = annotation
         }
         
-        annotaionView?.image = UIImage(named: "airport_icon")
+        annotaionView?.image = UIImage(named: "plane_icon")
         
         return annotaionView
     }
