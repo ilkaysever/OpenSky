@@ -19,6 +19,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailVC" customModule="OpenSky" customModuleProvider="target">
             <connections>
+                <outlet property="endPointLabel" destination="hhs-k5-sex" id="2ZY-Cx-nlf"/>
+                <outlet property="geomAltitudeLabel" destination="vtU-dr-MBk" id="ukR-uG-5Uc"/>
+                <outlet property="ownerLabel" destination="F5w-zi-siM" id="KAf-ng-lPT"/>
+                <outlet property="pnrLabel" destination="o8C-hH-gRF" id="N0k-qh-g1W"/>
+                <outlet property="startPointLabel" destination="vqO-Ga-JjS" id="pfl-J5-M4n"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,14 +55,14 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zzL-Nb-GPO">
                             <rect key="frame" x="0.0" y="34" width="289" height="18"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Kalkış Saati:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyO-wK-111">
-                                    <rect key="frame" x="0.0" y="0.0" width="89.333333333333329" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Firma Sahibi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyO-wK-111">
+                                    <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="18"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="16"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5w-zi-siM">
-                                    <rect key="frame" x="105.33333333333333" y="0.0" width="183.66666666666669" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Türk Hava Yolları" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5w-zi-siM">
+                                    <rect key="frame" x="106.66666666666667" y="0.0" width="182.33333333333331" height="18"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Regular" family="Ubuntu" pointSize="14"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -67,14 +72,14 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="P2N-iR-rAP">
                             <rect key="frame" x="0.0" y="68" width="289" height="18"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Varış Saati:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-LU-4XV">
-                                    <rect key="frame" x="0.0" y="0.0" width="82.333333333333329" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Yerden Yükseklik:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B2-LU-4XV">
+                                    <rect key="frame" x="0.0" y="0.0" width="131.66666666666666" height="18"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="16"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtU-dr-MBk">
-                                    <rect key="frame" x="98.333333333333329" y="0.0" width="190.66666666666669" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10253ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtU-dr-MBk">
+                                    <rect key="frame" x="147.66666666666663" y="0.0" width="141.33333333333337" height="18"/>
                                     <fontDescription key="fontDescription" name="Ubuntu-Regular" family="Ubuntu" pointSize="14"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>

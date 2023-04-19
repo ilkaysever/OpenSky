@@ -26,6 +26,7 @@ final class FlyViewModel: FlyViewModelProtocol {
             if let data = data, let results = data.states {
                 self.flyData = data
                 self.flyStateData = results
+                debugPrint(flyStateData ?? [])
                 self.didSuccess()
             } else {
                 self.didFailure(ErrorType.invalidData.rawValue)
@@ -39,6 +40,7 @@ final class FlyViewModel: FlyViewModelProtocol {
             if let data = data, let results = data.states {
                 self.flyData = data
                 self.flyStateData = results
+                debugPrint(flyStateData ?? [])
                 self.didSuccess()
             } else {
                 self.didFailure(ErrorType.invalidData.rawValue)

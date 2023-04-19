@@ -7,11 +7,6 @@ PODS:
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - PanModal (1.2.7)
-  - SwiftEntryKit (2.0.0)
-  - SwiftMessages (9.0.6):
-    - SwiftMessages/App (= 9.0.6)
-  - SwiftMessages/App (9.0.6)
-  - UPCarouselFlowLayout (1.1.2)
 
 DEPENDENCIES:
   - Alamofire
@@ -20,9 +15,6 @@ DEPENDENCIES:
   - lottie-ios
   - NVActivityIndicatorView
   - PanModal
-  - SwiftEntryKit
-  - SwiftMessages
-  - UPCarouselFlowLayout
 
 SPEC REPOS:
   trunk:
@@ -32,9 +24,6 @@ SPEC REPOS:
     - lottie-ios
     - NVActivityIndicatorView
     - PanModal
-    - SwiftEntryKit
-    - SwiftMessages
-    - UPCarouselFlowLayout
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
@@ -43,10 +32,7 @@ SPEC CHECKSUMS:
   lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
-  SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
-  SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
-  UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: 34cc1dc930e49f400941394645f7a8d9664bc58c
+PODFILE CHECKSUM: 29562c0a3a2615f5f8b2654e6feb4cea4e2d548b
 
 COCOAPODS: 1.12.0

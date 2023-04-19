@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 class BaseViewController: UIViewController {
     
@@ -27,18 +26,6 @@ class BaseViewController: UIViewController {
         navigationItem.title = title
     }
     
-    func showLoading() {
-        let loadingVC = LoadingVC()
-        loadingVC.modalPresentationStyle = .overFullScreen
-        loadingVC.modalTransitionStyle = .crossDissolve
-        self.present(loadingVC, animated: true)
-    }
-    
-    func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.dismiss(animated: true)
-        }
-    }
     
 }
 

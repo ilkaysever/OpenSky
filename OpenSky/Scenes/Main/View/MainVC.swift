@@ -23,6 +23,7 @@ class MainVC: BaseViewController {
     
     // MARK: - Variables
     let viewModel = FlyViewModel()
+    var stateModel: [State] = []
     
     // MARK: - LifeCyle
     override func viewDidLoad() {
@@ -87,7 +88,6 @@ class MainVC: BaseViewController {
     // MARK: - Request Functions
     
     private func setupBinding() {
-        showLoading()
         DispatchQueue.main.async {
             self.fetchAllFly()
         }
@@ -151,18 +151,23 @@ class MainVC: BaseViewController {
     
     private func addAirPlaneAnnotation(flyState: [State]?) {
         flyState?.forEach({ item in
-            let lon = CLLocationDegrees(item.longitude ?? 0.0)
             let lat = CLLocationDegrees(item.latitude ?? 0.0)
+            let lon = CLLocationDegrees(item.longitude ?? 0.0)
             let annotation = MKPointAnnotation()
+            
+            self.stateModel.append(item)
+            
             annotation.title = item.callSign
+            annotation.subtitle = "Hız: " + "\(item.velocity ?? 0.0)" + " " + "km/s"
             annotation.coordinate = CLLocationCoordinate2DMake(lat, lon)
             self.mapView.addAnnotation(annotation)
         })
     }
     
     // MARK: - Open Detail Bottom Sheet
-    func showDetailSheet() {
+    func showDetail(_ stateModel: State) {
         let vc = DetailVC()
+        vc.stateModel = stateModel
         self.presentPanModal(vc)
     }
     
@@ -180,7 +185,6 @@ class MainVC: BaseViewController {
     
     @IBAction func zoomOutTapped(_ sender: Any) {
         debugPrint("zoom out yapıldı...")
-        showDetailSheet()
     }
     
     @IBAction func myLocationTapped(_ sender: Any) {
@@ -195,10 +199,14 @@ extension MainVC: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
         
-        var annotaionView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        let reuseId = "myAnnotaion"
+        var annotaionView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if annotaionView == nil {
-            annotaionView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotaionView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             annotaionView?.canShowCallout = true
+            annotaionView?.tintColor = .systemBlue
+            let button = UIButton(type: UIButton.ButtonType.detailDisclosure)
+            annotaionView?.rightCalloutAccessoryView = button
         } else {
             annotaionView?.annotation = annotation
         }
@@ -206,6 +214,13 @@ extension MainVC: MKMapViewDelegate {
         annotaionView?.image = UIImage(named: "plane_icon")
         
         return annotaionView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let lat = Float((view.annotation?.coordinate.latitude)!)
+        let lon = Float((view.annotation?.coordinate.longitude)!)
+        let tappedItem = self.stateModel.filter({$0.longitude == lon && $0.latitude == lat}).first
+        showDetail(tappedItem!)
     }
     
 }

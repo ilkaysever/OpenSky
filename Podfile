@@ -11,9 +11,6 @@ target 'OpenSky' do
   pod 'IQKeyboardManager'
   pod 'NVActivityIndicatorView'
   pod 'PanModal'
-  pod 'UPCarouselFlowLayout'
-  pod 'SwiftMessages'
-  pod 'SwiftEntryKit'
   pod 'lottie-ios'
 
 end
