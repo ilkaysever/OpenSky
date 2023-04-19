@@ -8,12 +8,6 @@
 import UIKit
 import MapKit
 
-enum MapType: Int {
-    case standardMap = 0
-    case satelliteMap = 1
-    case hybridMap = 2
-}
-
 class MainVC: BaseViewController {
     
     // MARK: - UI Components
@@ -29,7 +23,6 @@ class MainVC: BaseViewController {
     
     // MARK: - Variables
     let viewModel = FlyViewModel()
-    var mapType: MapType?
     
     // MARK: - LifeCyle
     override func viewDidLoad() {
@@ -156,26 +149,12 @@ class MainVC: BaseViewController {
         }
     }
     
-    private func addAirPlaneAnnotation(flyState: [[State]]?) {
+    private func addAirPlaneAnnotation(flyState: [State]?) {
         flyState?.forEach({ item in
-            var longitude = 0.0
-            switch item[5] {
-            case .double(let data):
-                longitude = CGFloat(data)
-            default:
-                longitude = 0.0
-            }
-            var latitude = 0.0
-            switch item[6] {
-            case .double(let data):
-                latitude = CGFloat(data)
-            default:
-                latitude = 0.0
-            }
-            let lon = CLLocationDegrees(longitude)
-            let lat = CLLocationDegrees(latitude)
+            let lon = CLLocationDegrees(item.longitude ?? 0.0)
+            let lat = CLLocationDegrees(item.latitude ?? 0.0)
             let annotation = MKPointAnnotation()
-            annotation.title = "\(item[1])"
+            annotation.title = item.callSign
             annotation.coordinate = CLLocationCoordinate2DMake(lat, lon)
             self.mapView.addAnnotation(annotation)
         })
@@ -188,15 +167,10 @@ class MainVC: BaseViewController {
     }
     
     @IBAction func mapTypeButtonTapped(_ sender: Any) {
-        switch mapType {
-        case .standardMap:
-            mapView.mapType = .standard
-        case .satelliteMap:
-            mapView.mapType = .satellite
-        case .hybridMap:
+        if mapView.mapType == .standard {
             mapView.mapType = .hybrid
-        default:
-            break
+        } else {
+            mapView.mapType = .standard
         }
     }
     

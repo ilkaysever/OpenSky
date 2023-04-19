@@ -18,7 +18,7 @@ final class FlyViewModel: FlyViewModelProtocol {
     public var didFailure: (String)->() = { _ in }
     
     private var flyData: FlyResponseModel?
-    private var flyStateData: [[State]]?
+    private var flyStateData: [State]?
     
     func requestAllFly() {
         FlyRequest.shared.requestAllFlys { [weak self] data in
@@ -46,8 +46,8 @@ final class FlyViewModel: FlyViewModelProtocol {
         }
     }
     
-    func returnFlyState() -> [[State]]? {
-        return flyStateData ?? [[]]
+    func returnFlyState() -> [State]? {
+        return flyStateData ?? []
     }
     
     func returnFlyStateCount() -> Int {

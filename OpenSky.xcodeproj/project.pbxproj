@@ -141,7 +141,6 @@
 				6BD1E95F29EDE78400E78292 /* Scenes */,
 				6BD1E96629EDE7E000E78292 /* Base */,
 				6BD1E96329EDE7A100E78292 /* Extensions */,
-				6BD1E96229EDE79B00E78292 /* Helpers */,
 				6BD1E96729EDE80100E78292 /* Utilities */,
 				6BD1E96429EDE7A700E78292 /* Resources */,
 				6BAB2FB329EDCDA4001C1286 /* OpenSky.xcdatamodeld */,
@@ -167,13 +166,6 @@
 				6BECF3BF29EEB9AA00CC53F4 /* Request */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		6BD1E96229EDE79B00E78292 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		6BD1E96329EDE7A100E78292 /* Extensions */ = {

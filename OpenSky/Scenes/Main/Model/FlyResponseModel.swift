@@ -5,113 +5,53 @@
 //  Created by İlkay Sever on 18.04.2023.
 //
 
-//struct FlyResponseModel: Codable {
-//
-//    var time: Int?
-//    var states: [State]?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case time
-//        case states
-//    }
-//
-//}
-//
-//struct State: Codable {
-//
-//    var icao24: String?
-//    var callsign: String?
-//    var origin_country: String?
-//    var time_position: Int?
-//    var last_contact: Int?
-//    var longitude: Float?
-//    var latitude: Float?
-//    var baro_altitude: Float?
-//    var on_ground: Bool?
-//    var velocity: Float?
-//    var true_track: Float?
-//    var vertical_rate: Float?
-//    var sensors: [Int]?
-//    var geo_altitude: Float?
-//    var squawk: String?
-//    var spi: Bool?
-//    var position_source: Int?
-//
-//    enum CodingKeys: Int, CodingKey {
-//
-//       case icao24 = 0
-//        case callsign = 1
-//        case origin_country = 2
-//        case time_position = 3
-//        case last_contact = 4
-//        case longitude = 5
-//        case latitude = 6
-//        case baro_altitude = 7
-//        case on_ground = 8
-//        case velocity = 9
-//        case true_track = 10
-//        case vertical_rate = 11
-//        case sensors = 12
-//        case geo_altitude = 13
-//        case squawk = 14
-//        case spi = 15
-//        case position_source = 16
-//
-//    }
-//}
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let flyResponseModel = try? JSONDecoder().decode(FlyResponseModel.self, from: jsonData)
-
-import Foundation
-
-// MARK: - FlyResponseModel
 struct FlyResponseModel: Codable {
+    
     var time: Int?
-    var states: [[State]]?
+    var states: [State]?
+    
 }
 
-enum State: Codable {
-    case bool(Bool)
-    case double(Double)
-    case string(String)
-    case null
-
+struct State: Codable {
+    
+    var icao24: String?
+    var callSign: String?
+    var originCountry: String?
+    var timePosition: Int?
+    var lastContact: Int?
+    var longitude: Float?
+    var latitude: Float?
+    var baroAltitude: Float?
+    var onGround: Bool?
+    var velocity: Float?
+    var trueTrack: Float?
+    var verticalRate: Float?
+    var sensors: [Int]?
+    var geoAltitude: Float?
+    var squawk: String?
+    var spi: Bool?
+    var positionSource: Int
+    
     init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let x = try? container.decode(Bool.self) {
-            self = .bool(x)
-            return
-        }
-        if let x = try? container.decode(Double.self) {
-            self = .double(x)
-            return
-        }
-        if let x = try? container.decode(String.self) {
-            self = .string(x)
-            return
-        }
-        if container.decodeNil() {
-            self = .null
-            return
-        }
-        throw DecodingError.typeMismatch(State.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for State"))
+        var values = try decoder.unkeyedContainer()
+        self.icao24 = try values.decode(String.self)
+        self.callSign = try values.decode(String.self)
+        self.originCountry = try values.decode(String.self)
+        self.timePosition = try values.decodeIfPresent(Int.self)
+        self.lastContact = try values.decode(Int.self)
+        self.longitude = try values.decodeIfPresent(Float.self)
+        self.latitude = try values.decodeIfPresent(Float.self)
+        self.baroAltitude = try values.decodeIfPresent(Float.self)
+        self.onGround = try values.decode(Bool.self)
+        self.velocity = try values.decodeIfPresent(Float.self)
+        self.trueTrack = try values.decodeIfPresent(Float.self)
+        self.verticalRate = try values.decodeIfPresent(Float.self)
+        self.sensors = try values.decodeIfPresent([Int].self)
+        self.geoAltitude = try values.decodeIfPresent(Float.self)
+        self.squawk = try values.decodeIfPresent(String.self)
+        self.spi = try values.decode(Bool.self)
+        self.positionSource = try values.decode(Int.self)
     }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .bool(let x):
-            try container.encode(x)
-        case .double(let x):
-            try container.encode(x)
-        case .string(let x):
-            try container.encode(x)
-        case .null:
-            try container.encodeNil()
-        }
-    }
+    
 }
-
