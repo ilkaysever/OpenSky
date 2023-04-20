@@ -28,7 +28,7 @@ final class DetailVC: BaseViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        pnrLabel.text = stateModel?.callSign
+        pnrLabel.text = stateModel?.callSign?.removingWhitespaces()
         ownerLabel.text = stateModel?.originCountry
         geomAltitudeLabel.text = "\(stateModel?.geoAltitude ?? 0.0)" + "M"
         startPointLabel.text = "N/A"
@@ -44,11 +44,11 @@ extension DetailVC: PanModalPresentable {
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(250)
+        return .contentHeight(230)
     }
     
     var longFormHeight: PanModalHeight {
-        return .contentHeight(250)
+        return .contentHeight(230)
     }
     
     var cornerRadius: CGFloat {

@@ -16,8 +16,6 @@ class MainVC: BaseViewController {
     @IBOutlet weak var searchContainer: UIView!
     @IBOutlet weak var searchTxtField: UITextField!
     @IBOutlet weak var mapTypeView: UIView!
-    @IBOutlet weak var zoomInView: UIView!
-    @IBOutlet weak var zoomOutView: UIView!
     @IBOutlet weak var myLocationView: UIView!
     @IBOutlet weak var flyCountLabel: UILabel!
     
@@ -51,14 +49,6 @@ class MainVC: BaseViewController {
         mapTypeView.addCornerRadius(radius: 8)
         mapTypeView.addBorderView(width: 1.5, color: .orange)
         mapTypeView.addShadow()
-        
-        zoomInView.addCornerRadius(radius: 8)
-        zoomInView.addBorderView(width: 1.5, color: .orange)
-        zoomInView.addShadow()
-        
-        zoomOutView.addCornerRadius(radius: 8)
-        zoomOutView.addBorderView(width: 1.5, color: .orange)
-        zoomOutView.addShadow()
         
         myLocationView.addCornerRadius(radius: 8)
         myLocationView.addBorderView(width: 1.5, color: .orange)
@@ -157,7 +147,7 @@ class MainVC: BaseViewController {
             
             self.stateModel.append(item)
             
-            annotation.title = item.callSign
+            annotation.title = item.callSign?.removingWhitespaces()
             annotation.subtitle = "Hız: " + "\(item.velocity ?? 0.0)" + " " + "km/s"
             annotation.coordinate = CLLocationCoordinate2DMake(lat, lon)
             self.mapView.addAnnotation(annotation)
@@ -177,14 +167,6 @@ class MainVC: BaseViewController {
         } else {
             mapView.mapType = .standard
         }
-    }
-    
-    @IBAction func zoomInTapped(_ sender: Any) {
-        debugPrint("zoom yapıldı...")
-    }
-    
-    @IBAction func zoomOutTapped(_ sender: Any) {
-        debugPrint("zoom out yapıldı...")
     }
     
     @IBAction func myLocationTapped(_ sender: Any) {
