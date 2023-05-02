@@ -26,6 +26,4 @@ class BaseViewController: UIViewController {
         navigationItem.title = title
     }
     
-    
 }
-
