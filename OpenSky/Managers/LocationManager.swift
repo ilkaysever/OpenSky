@@ -29,25 +29,31 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     
     // Starts updating location
     func startUpdateLocation() {
-        if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.startUpdatingLocation()
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.startUpdatingLocation()
+            }
         }
     }
     
     // Stops updating location
     func stopUpdateLocation() {
-        if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.stopUpdatingLocation()
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.stopUpdatingLocation()
+            }
         }
     }
     
     // It's called to get current location. Starts location update and stop after getting location
     func getCurrentLocationData(completion: @escaping (CLLocation) -> Void) {
-        if CLLocationManager.locationServicesEnabled() {
-            self.startUpdateLocation()
-            completionHandlerForLocationUpdates = { (location) -> Void in
-                completion(location)
-                self.stopUpdateLocation()
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.startUpdateLocation()
+                self.completionHandlerForLocationUpdates = { (location) -> Void in
+                    completion(location)
+                    self.stopUpdateLocation()
+                }
             }
         }
     }
